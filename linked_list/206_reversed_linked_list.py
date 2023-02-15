@@ -4,14 +4,23 @@ class ListNode:
         self.next = next
 
 
+# def reverse_list(head: ListNode) -> ListNode:
+#     node, prev = head, None
+#
+#     while node is not None:
+#         next, node.next = node.next, prev
+#         prev, node = node, next
+#
+#     return prev
+
 def reverse_list(head: ListNode) -> ListNode:
-    node, prev = head, None
-
-    while node is not None:
+    def reverse(node: ListNode, prev: ListNode = None):
+        if not node:
+            return prev
         next, node.next = node.next, prev
-        prev, node = node, next
+        return reverse(next, node)
 
-    return prev
+    return reverse(head)
 
 
 head_node = ListNode(1)
